@@ -13,7 +13,11 @@ This project is intended as a practice exercise for working with TypeScript and 
 ```bash
 git clone https://github.com/H3llynx/4.TypeScript-API.git
 cd 4.TypeScript-API
+<<<<<<< HEAD
 git checkout visual-refactor
+=======
+git checkout develop
+>>>>>>> 95c49f1 (feature / random joke function to show random joke on page loading, and button to get another joke)
 npm install
 npm run dev
 ```
