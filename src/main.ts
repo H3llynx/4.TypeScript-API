@@ -1,4 +1,5 @@
-import { getRandomJoke } from "./scripts/api-manager/services";
+import { getRandomJoke } from "./scripts/api-manager/joke-services";
+import { getLocationPermission } from "./scripts/api-manager/weather-services";
 import { jokeReport, rateJoke } from "./scripts/jokes/score";
 import { disableScoreButtons, enableScoreButtons, showJoke } from "./scripts/jokes/ui";
 
@@ -12,6 +13,7 @@ enableScoreButtons();
 }
 
 loadJoke();
+getLocationPermission();
 
 const jokeBtn = document.getElementById("joke-button") as HTMLButtonElement;
 jokeBtn.addEventListener("click", loadJoke);
@@ -24,4 +26,10 @@ document.querySelectorAll(".score-button").forEach(button => {
         console.log(jokeReport);
         disableScoreButtons();
 });
+})
+
+const allowLocationBtn = document.getElementById("position-permission") as HTMLButtonElement;
+allowLocationBtn.addEventListener("click", () => {
+    console.log("clicked");
+    getLocationPermission();
 })
