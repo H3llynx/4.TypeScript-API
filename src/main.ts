@@ -1,20 +1,17 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import viteLogo from '/vite.svg'
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+import { getRandomJoke } from "./scripts/api-manager/services";
+
+import { showJoke } from "./scripts/jokes/ui";
+
+let currentJoke : {id: string; joke: string; status: number};
+
+async function loadJoke() {
+const joke = await getRandomJoke();
+showJoke(joke);
+currentJoke = joke;
+}
+
+loadJoke();
+
+const jokeBtn = document.getElementById("joke-button") as HTMLButtonElement;
+jokeBtn.addEventListener("click", loadJoke);
+

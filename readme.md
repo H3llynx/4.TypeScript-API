@@ -17,6 +17,8 @@ This project is intended as a practice exercise for working with TypeScript and 
 git clone https://github.com/H3llynx/4.TypeScript-API.git
 cd 4.TypeScript-API
 git checkout develop
+npm install
+npm run dev
 ```
 
 2. **Preview in browser:**
