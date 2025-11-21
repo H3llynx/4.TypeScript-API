@@ -6,6 +6,7 @@
   --dark: #191919;
   --light: #d9d9d9;
   --kaki: rgb(62, 66, 29);
+  --kaki-rgba: rgba(29, 30, 14, 0.8);
   --yellow: #d48a02;
   --shadow: 2px 2px 16px black;
 }
@@ -20,13 +21,13 @@ html {
 }
 
 body {
-  min-height: 100dvh;
+  height: 100dvh;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-end;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: normal;
   background: url("/src/assets/images/background.png");
@@ -37,18 +38,18 @@ body {
 
 main {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 2rem;
-  margin: auto;
+  margin: auto 2rem 2rem auto;
 }
 
 section {
   width: min(600px, 80vw);
   padding: 2rem;
   border-radius: 0.6rem;
-  background: #00000075;
+  background: var(--kaki-rgba);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 4px solid var(--dark);
   font-family: "Russo One", sans-serif;
   display: flex;
   flex-direction: column;
@@ -57,22 +58,37 @@ section {
 
 button {
   border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
 }
 
-#score-container {
-  align-self: end;
+.score-container {
+  color: inherit;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 0.2em;
+
+  button:not(:disabled):hover,
+  button:not(:disabled):hover~button {
+    color: var(--yellow);
+  }
+
+  button:disabled {
+    opacity: 0.5;
+  }
 }
 
 #joke-button {
   color: var(--dark);
-  border-radius: 0.6rem;
+  border-radius: 9px;
   box-shadow: var(--shadow);
   padding: 0.4rem 1rem;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-family: "Black Ops One", system-ui;
   width: max-content;
   align-self: end;
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
