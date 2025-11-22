@@ -1,6 +1,11 @@
-export function showJoke(data :{id: string; joke: string; status: number}) {
+export function showJoke(joke: string) {
     const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
-    jokeP.textContent = data.joke;
+    jokeP.textContent = joke;
+}
+
+export function showChuckJoke(joke: string) {
+    const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
+    jokeP.textContent = joke;
 }
 
 export function disableScoreButtons() {
