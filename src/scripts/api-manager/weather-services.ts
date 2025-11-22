@@ -32,7 +32,12 @@ export async function getCurrentWeather() {
     try {
         const response = await fetch(weatherURL, options);
         const data = await response.json();
-        console.log(data);
+        return (
+            {
+                temperature: data.current.temperature,
+                icon: data.current.weather_icons[0]
+            }
+        )
     } catch (error) {
         console.error(error);
     }
