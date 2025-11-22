@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Russo+One&display=swap');
 
 :root {
-  --bg: linear-gradient(150deg, rgba(0, 0, 0, 0.8), transparent);
-  --bg-footer: linear-gradient(180deg, transparent, rgb(0, 0, 0));
+  --bg: linear-gradient(-90deg, rgba(4, 5, 4, 0.3), transparent);
+  --bg-aside: linear-gradient(90deg, transparent, rgba(4, 5, 4, 0.8));
+  --bg-rgba: rgba(4, 5, 4, 0.9);
   --dark: #191919;
   --light: #d9d9d9;
   --kaki: rgb(62, 66, 29);
-  --kaki-rgba: rgba(29, 30, 14, 0.8);
+  --beige: #b3a576;
   --yellow: #d48a02;
   --shadow: 2px 2px 16px black;
 }
@@ -25,31 +26,30 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: space-between;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: normal;
-  background: url("/src/assets/images/background.png");
+  background: var(--bg), url("/src/assets/images/background.png");
   background-size: cover;
-  background-attachment: fixed;
+  background-position: center;
   color: var(--light);
 }
 
 main {
   display: flex;
   gap: 2rem;
-  margin: auto 2rem 2rem auto;
+  margin: 2rem 2rem auto 2rem;
 }
 
 section {
-  width: min(600px, 80vw);
-  padding: 2rem;
+  width: min(500px, 80vw);
+  padding: 1.5rem 2rem;
   border-radius: 0.6rem;
-  background: var(--kaki-rgba);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: var(--bg-rgba) url("../assets/images/nav.png");
+  background-size: 200% 200%;
   border: 4px solid var(--dark);
+  box-shadow: var(--shadow);
   font-family: "Russo One", sans-serif;
   display: flex;
   flex-direction: column;
@@ -62,6 +62,7 @@ button {
   background: transparent;
   color: inherit;
   cursor: pointer;
+  transition: 0.6s;
 }
 
 .score-container {
@@ -92,8 +93,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: var(--yellow);
-  transition: 0.6s;
+  background: var(--beige);
 
   &:hover {
     background: var(--kaki);
@@ -101,8 +101,24 @@ button {
   }
 }
 
-footer {
-  background: var(--bg-footer);
-  width: 100%;
+aside {
+  background: var(--bg-aside);
+  background-size: cover;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+#temperature-widget {
+  display: flex;
+  gap: 2rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--kaki);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font-family: "Russo One", sans-serif;
+  padding: 1.5rem 2rem;
+  width: max-content;
 }
