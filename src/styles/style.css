@@ -2,13 +2,13 @@
 
 :root {
   --bg: linear-gradient(-90deg, rgba(4, 5, 4, 0.3), transparent);
-  --bg-aside: linear-gradient(90deg, transparent, rgba(4, 5, 4, 0.8));
+  --bg-header: linear-gradient(90deg, transparent, rgba(4, 5, 4, 0.8));
   --bg-rgba: rgba(4, 5, 4, 0.9);
   --dark: #191919;
   --light: #d9d9d9;
   --kaki: rgb(62, 66, 29);
   --beige: #b3a576;
-  --yellow: #d48a02;
+  --yellow: #ffaa0d;
   --shadow: 2px 2px 16px black;
 }
 
@@ -26,6 +26,7 @@ body {
   margin: 0;
   padding: 0;
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: space-between;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -34,6 +35,53 @@ body {
   background-size: cover;
   background-position: center;
   color: var(--light);
+}
+
+h1,
+h2 {
+  font-family: "Black Ops One", system-ui;
+  font-weight: normal;
+  margin: 0.5rem 0;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.6rem;
+}
+
+header {
+  background: var(--bg-header);
+  height: 100%;
+  max-width: 400px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+
+  .header img {
+    width: 60%;
+  }
+}
+
+#temperature-widget {
+  display: flex;
+  gap: 2rem;
+  border-radius: 0.6rem;
+  background: url("../assets/images/widget.png");
+  background-size: cover;
+  color: var(--dark);
+  border: 1px solid var(--kaki);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  font-family: "Russo One", sans-serif;
+  padding: 1.5rem 2rem;
+  width: max-content;
 }
 
 main {
@@ -99,26 +147,4 @@ button {
     background: var(--kaki);
     color: var(--light);
   }
-}
-
-aside {
-  background: var(--bg-aside);
-  background-size: cover;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  gap: 1rem;
-}
-
-#temperature-widget {
-  display: flex;
-  gap: 2rem;
-  border-radius: 0.6rem;
-  border: 1px solid var(--kaki);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  font-family: "Russo One", sans-serif;
-  padding: 1.5rem 2rem;
-  width: max-content;
 }
