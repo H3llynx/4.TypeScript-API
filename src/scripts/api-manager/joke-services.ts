@@ -11,7 +11,10 @@ export async function getRandomJoke() {
             }
         })
         const data = await response.json();
-        const result = random === 0 ? data.value : data.joke
+        const result = {
+            joke: random === 0 ? data.value : data.joke,
+            type: random === 0 ? "chuck" : "dad"
+        }
         return result;
     } catch (error) {
         console.log(error);
