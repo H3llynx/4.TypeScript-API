@@ -1,6 +1,5 @@
 export async function getRandomJoke() {
     const random = Math.floor(Math.random() * 2)
-    console.log(random);
     const URL = random === 0 ? "https://api.chucknorris.io/jokes/random" : "https://icanhazdadjoke.com/"
     try {
         const response = await fetch(URL, {
