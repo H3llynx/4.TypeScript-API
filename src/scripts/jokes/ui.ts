@@ -1,11 +1,10 @@
-export function showJoke(joke: string) {
+export function showJoke(data: { joke: string; type: string }) {
     const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
-    jokeP.textContent = joke;
-}
-
-export function showChuckJoke(joke: string) {
-    const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
-    jokeP.textContent = joke;
+    const jokeCtn = document.getElementById("joke-container") as HTMLElement;
+    jokeP.textContent = data.joke;
+    if (data.type === "chuck") {
+        jokeCtn.classList.add("chuck");
+    } else jokeCtn.classList.remove("chuck");
 }
 
 export function disableScoreButtons() {
