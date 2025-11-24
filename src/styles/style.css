@@ -3,7 +3,7 @@
 :root {
   --bg: linear-gradient(-90deg, rgba(4, 5, 4, 0.3), transparent);
   --bg-header: linear-gradient(90deg, transparent, rgba(4, 5, 4, 0.8));
-  --bg-rgba: rgba(4, 5, 4, 0.7);
+  --bg-rgba: rgba(4, 5, 4, 0.9);
   --dark: #191919;
   --light: #d9d9d9;
   --kaki: rgb(62, 66, 29);
@@ -22,7 +22,7 @@ html {
 }
 
 body {
-  height: 100dvh;
+  min-height: 100dvh;
   margin: 0;
   padding: 0;
   display: flex;
@@ -33,6 +33,7 @@ body {
   font-size: normal;
   background: var(--bg), url("/src/assets/images/background.png");
   background-size: cover;
+  background-attachment: fixed;
   background-position: center;
   color: var(--light);
 }
@@ -42,21 +43,22 @@ h2 {
   font-family: "Black Ops One", system-ui;
   font-weight: normal;
   margin: 0.5rem 0;
+  text-shadow: 2px 2px 10px black;
 }
 
 h1 {
-  font-size: 2rem;
+  font-size: clamp(1.6rem, 4vw, 2rem);
 }
 
 h2 {
-  font-size: 1.6rem;
+  font-size: clamp(1.4rem, 2vw, 1.6rem);
 }
 
 header {
   background: var(--bg-header);
-  height: 100%;
-  max-width: 400px;
-  padding: 2rem;
+  min-height: 100dvh;
+  width: 30%;
+  padding: 5% 2%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -65,13 +67,15 @@ header {
   text-align: center;
 
   .header img {
-    width: 60%;
+    width: min(200px, 60%);
   }
 }
 
 #temperature-widget {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  justify-content: space-around;
+  width: min(300px, 80%);
   border-radius: 0.6rem;
   background: url("../assets/images/widget.png");
   background-size: cover;
@@ -80,26 +84,38 @@ header {
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   font-family: "Russo One", sans-serif;
-  padding: 1.5rem 2rem;
-  width: max-content;
+  padding: 0.6rem 0;
 
   img {
     aspect-ratio: 4/4;
     border-radius: 50%;
+    max-width: 25%;
+  }
+}
+
+#cat-widget {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 0.5rem;
+
+  img {
+    width: 100%;
   }
 }
 
 main {
   display: flex;
+  width: min(500px, 90vw);
   gap: 2rem;
-  margin: 2rem 2rem auto 2rem;
+  margin: 5% 2rem auto 2rem;
   border: 1px solid var(--kaki);
   border-radius: 0.6rem;
   box-shadow: var(--shadow);
 }
 
 section {
-  width: min(500px, 80vw);
+  width: 100%;
   padding: 1.5rem 2rem;
   border-radius: 0.6rem;
   background: var(--bg-rgba);
@@ -158,5 +174,24 @@ button {
   &:hover {
     background: var(--kaki);
     color: var(--light);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  body {
+    flex-direction: column;
+    justify-content: center;
+    padding: 10% 0;
+  }
+
+  header {
+    width: 100%;
+    min-height: unset;
+    margin-bottom: auto;
+    background: none;
+  }
+
+  main {
+    margin: auto;
   }
 }
