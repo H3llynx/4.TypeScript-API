@@ -1,8 +1,10 @@
 import { getRandomJoke } from "./scripts/api-manager/joke-services";
+import { getLocationPermission } from "./scripts/api-manager/weather-services";
 import { jokeReport, rateJoke } from "./scripts/jokes/score";
 import { disableScoreButtons, enableScoreButtons, showJoke } from "./scripts/jokes/ui";
-// import { getCurrentWeather } from "./scripts/api-manager/weather-services";
+import { showMap } from "./scripts/map/ui";
 import { showWeather } from "./scripts/weather/ui";
+// getCurrentWeather
 
 let currentJoke: { joke: string; type: string } | undefined;
 
@@ -17,12 +19,17 @@ async function loadJoke() {
 
 loadJoke();
 
-// const weatherData: { temperature: number; icon: string } | undefined = await getCurrentWeather();
-// if (weatherData) {
-//     showWeather(weatherData.temperature, weatherData.icon);
-// }
+async function loadUserLocationInfo() {
+    await getLocationPermission();
+    showWeather(8, "https://i.ibb.co/Dm6y5cr/blobfish.webp");
+    showMap();
+    // const weatherData: { temperature: number; icon: string } | undefined = await getCurrentWeather();
+    // if (weatherData) {
+    //     showWeather(weatherData.temperature, weatherData.icon);
+    // }
+}
 
-showWeather(8, "https://i.ibb.co/Dm6y5cr/blobfish.webp");
+loadUserLocationInfo();
 
 const jokeBtn = document.getElementById("joke-button") as HTMLButtonElement;
 jokeBtn.addEventListener("click", loadJoke);
