@@ -5,8 +5,8 @@ export async function getRandomJoke() {
         const response = await fetch(URL, {
             method: "GET",
             headers: {
-                'Accept': 'application/json',
-                'User-Agent': 'Sofa army'
+                "Accept": "application/json",
+                "User-Agent": "Sofa army"
             }
         })
         const data = await response.json();

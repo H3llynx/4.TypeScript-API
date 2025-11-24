@@ -16,6 +16,7 @@ async function loadJoke() {
 }
 
 loadJoke();
+
 // const weatherData: { temperature: number; icon: string } | undefined = await getCurrentWeather();
 // if (weatherData) {
 //     showWeather(weatherData.temperature, weatherData.icon);
