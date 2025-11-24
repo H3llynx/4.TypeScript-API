@@ -1,12 +1,25 @@
-import * as L from 'leaflet';
-import { userLocation } from '../api-manager/weather-services';
+import * as L from "leaflet";
+import { userLocation } from "../api-manager/weather-services";
 
 export async function showMap() {
     if (userLocation.latitude && userLocation.longitude) {
-        const map = L.map("map").setView([userLocation.latitude, userLocation.longitude], 13);
-        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        let coordinates: [number, number] = [userLocation.latitude, userLocation.longitude];
+        const map = L.map("map").setView(coordinates, 16);
+        L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
             maxZoom: 19,
-            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            attribution: "Tiles © Esri"
         }).addTo(map);
+        var customMarker = L.icon({
+            iconUrl: "src/assets/images/marker.png",
+            iconSize: [38, 38],
+            popupAnchor: [-3, -76]
+        });
+        const marker = L.marker(coordinates, { icon: customMarker }).addTo(map);
+        marker.addEventListener("click", () => {
+            const popup = L.popup()
+                .setLatLng(coordinates)
+                .setContent("You are here!")
+            popup.openOn(map);
+        })
     }
 }

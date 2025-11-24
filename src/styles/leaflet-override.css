@@ -1,0 +1,7 @@
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    background-color: var(--dark);
+    color: var(--light);
+    font-family: "Russo One", sans-serif;
+    border: 1px solid var(--beige);
+}

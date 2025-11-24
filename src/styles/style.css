@@ -80,11 +80,12 @@ header {
   background: url("../assets/images/widget.png");
   background-size: cover;
   color: var(--dark);
-  border: 1px solid var(--kaki);
+  border: 1px solid var(--beige);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   font-family: "Russo One", sans-serif;
-  padding: 1rem 0;
+  padding: 1rem 0.4rem;
+  box-shadow: var(--shadow);
 
   img {
     aspect-ratio: 4/4;
@@ -96,6 +97,8 @@ header {
 #map {
   width: min(300px, 80%);
   height: 200px;
+  border-radius: 0.6rem;
+  border: 1px solid var(--beige);
 }
 
 main {
