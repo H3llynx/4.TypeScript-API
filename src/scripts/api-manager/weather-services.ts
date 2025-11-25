@@ -5,7 +5,13 @@ function getCurrentPositionAsync(): Promise<GeolocationPosition> {
         navigator.geolocation.getCurrentPosition(
             (position) => resolve(position),
             (error) => {
-                alert("Location access denied. Please enable it in your browser settings.");
+                if (error.code === 1) {
+                    alert("Location access denied. Please enable it in your browser settings.");
+                }
+                else if (error.code === 2) {
+                    alert("Location currently unavailable. Please try again later.")
+                }
+                else alert("Unknown error");
                 reject(error);
             }
         );
@@ -27,21 +33,21 @@ export async function getLocationPermission() {
     }
 }
 
-const key = "82197ea57ff8317968053b853ef47bc3";
+const key = "8262f0260647636979f12177667c2539";
 const options = { method: 'GET', headers: { Accept: 'application/json' } };
 
 export async function getCurrentWeather() {
-    const weatherURL = `https://api.weatherstack.com/current?access_key=${key}&query=${userLocation.latitude},${userLocation.longitude}`;
+    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${key}&units=metric`;
     try {
         const response = await fetch(weatherURL, options);
         const data = await response.json();
         return (
             {
-                temperature: data.current.temperature,
-                icon: data.current.weather_icons[0]
+                temperature: data.main.temp,
+                icon: data.weather[0].icon
             }
         )
     } catch (error) {
         console.error(error);
     }
-}
+};
