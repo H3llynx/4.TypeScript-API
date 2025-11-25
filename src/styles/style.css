@@ -54,35 +54,43 @@ h2 {
   font-size: clamp(1.4rem, 2vw, 1.6rem);
 }
 
-header {
+span {
+  font-size: 0.8rem;
+  margin-right: 5px;
+}
+
+main {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 1fr 30%;
+  grid-template-areas:
+    "jokes header"
+    "jokes map"
+    "jokes weather";
   background: var(--bg-header);
-  min-height: 100dvh;
-  width: 30%;
   padding: 5% 2%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+  gap: 2rem;
+}
+
+header {
   text-align: center;
 
-  .header img {
+  img {
     width: min(200px, 60%);
   }
 }
 
 #temperature-widget {
+  width: 80%;
+  margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: min(300px, 80%);
   border-radius: 0.6rem;
   background: url("../assets/images/widget.png");
   background-size: cover;
   color: var(--dark);
   border: 1px solid var(--beige);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   font-family: "Russo One", sans-serif;
   padding: 1rem 0.4rem;
   box-shadow: var(--shadow);
@@ -95,29 +103,23 @@ header {
 }
 
 #map {
-  width: min(300px, 80%);
+  width: 80%;
   height: 200px;
   border-radius: 0.6rem;
   border: 1px solid var(--beige);
-}
-
-main {
-  display: flex;
-  width: min(500px, 90vw);
-  gap: 2rem;
-  margin: 5% 2rem auto 2rem;
-  border: 1px solid var(--kaki);
-  border-radius: 0.6rem;
-  box-shadow: var(--shadow);
+  margin: auto;
 }
 
 section {
-  width: 100%;
+  width: min(500px, 90vw);
   padding: 1.5rem 2rem;
+  margin: 5% 2rem auto 2rem;
   border-radius: 0.6rem;
   background: var(--bg-rgba);
   background-size: 200% 200%;
   border: 4px solid var(--dark);
+  outline: 1px solid var(--kaki);
+  box-shadow: var(--shadow);
   font-family: "Russo One", sans-serif;
   display: flex;
   flex-direction: column;
@@ -143,15 +145,25 @@ button {
   display: flex;
   flex-direction: row-reverse;
   gap: 0.2em;
+  align-items: center;
+  color: var(--beige);
 
-  button:not(:disabled):hover,
-  button:not(:disabled):hover~button {
+  button:hover,
+  button:hover~button {
     color: var(--yellow);
   }
 
-  button:disabled {
-    opacity: 0.5;
+  .edit {
+    font-size: 0.8rem;
+    pointer-events: none;
   }
+}
+
+.score-container.scored {
+  flex-direction: row;
+  justify-content: flex-end;
+  color: var(--yellow);
+  opacity: 0.8;
 }
 
 #joke-button {
@@ -175,20 +187,17 @@ button {
 }
 
 @media only screen and (max-width: 800px) {
-  body {
-    flex-direction: column;
-    justify-content: center;
-    padding: 10% 0;
-  }
-
-  header {
-    width: 100%;
-    min-height: unset;
-    margin-bottom: auto;
-    background: none;
-  }
-
   main {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "jokes"
+      "weather"
+      "map";
+    background: unset;
+  }
+
+  section {
     margin: auto;
   }
 }
