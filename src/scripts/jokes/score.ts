@@ -1,6 +1,7 @@
-export const jokeReport: { joke: string; score: number; date: string }[] = []
+import type { Joke, ScoredJoke } from "../types/types";
+export const jokeReport: ScoredJoke[] = []
 
-export function scoreJoke(value: number, joke: { joke: string; type: string }) {
+export function scoreJoke(value: number, joke: Joke) {
     jokeReport.push({
         joke: joke.joke,
         score: value,

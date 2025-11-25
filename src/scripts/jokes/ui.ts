@@ -1,5 +1,6 @@
+import type { Joke } from "../types/types";
 
-export function showJoke(data: { joke: string; type: string }) {
+export function showJoke(data: Joke) {
   const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
   const jokeCtn = document.getElementById("joke-container") as HTMLElement;
   jokeP.textContent = data.joke;

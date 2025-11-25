@@ -81,7 +81,7 @@ header {
 }
 
 #temperature-widget {
-  width: 80%;
+  width: min(300px, 80%);
   margin: auto;
   display: flex;
   align-items: center;
@@ -103,11 +103,11 @@ header {
 }
 
 #map {
-  width: 80%;
+  width: min(300px, 80%);
   height: 200px;
   border-radius: 0.6rem;
   border: 1px solid var(--beige);
-  margin: auto;
+  margin: auto auto 0 auto;
 }
 
 section {
@@ -186,7 +186,7 @@ button {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 850px) {
   main {
     grid-template-columns: 1fr;
     grid-template-areas:
