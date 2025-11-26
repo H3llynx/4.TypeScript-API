@@ -4,7 +4,7 @@ import { userLocation } from "../api-manager/weather-services";
 export async function showMap() {
     if (userLocation.latitude && userLocation.longitude) {
         let coordinates: [number, number] = [userLocation.latitude, userLocation.longitude];
-        const map = L.map("map").setView(coordinates, 16);
+        const map = L.map("map").setView(coordinates, 13);
         L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
             maxZoom: 19,
             attribution: "Tiles © Esri"
