@@ -5,9 +5,6 @@
 Create a web application that displays a random dad joke and the current weather based on the user's location.
 This project is intended as a practice exercise for working with TypeScript and APIs
 
-## Preview
-
-// pending
 
 ## Getting Started
 
@@ -17,18 +14,31 @@ This project is intended as a practice exercise for working with TypeScript and 
 git clone https://github.com/H3llynx/4.TypeScript-API.git
 cd 4.TypeScript-API
 git checkout develop
+npm install
+npm run dev
 ```
 
 2. **Preview in browser:**
 
-// pending
+![Screenshot](src/assets/images/preview.png)
 
 ---
 
 ## 📁 Folder Structure
 
 ```
-// pending
+📦 src
+ ┣ 📂 assets
+ ┣ 📂 scripts
+ ┣ 📂 styles
+ ┣ 📄 main.ts
+ ┣ 📄 vite.env.d.ts
+ ┣ 📂 tests
+ ┣ 📄 index.html
+ ┣ 📄 package-lock.json
+ ┣ 📄 package.json
+ ┣ 📄 README.md
+ ┗ 📄 tsconfig.json
 ```
 
 ---
