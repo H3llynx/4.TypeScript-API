@@ -1,6 +1,6 @@
 export let userLocation: { latitude?: number; longitude?: number } = {}
 
-function getCurrentPositionAsync(): Promise<GeolocationPosition> {
+function getCurrentPosition(): Promise<GeolocationPosition> {
     return new Promise((resolve, reject) => {
         navigator.geolocation.getCurrentPosition(
             (position) => resolve(position),
@@ -22,7 +22,7 @@ export async function getLocationPermission() {
     try {
         const result = await navigator.permissions.query({ name: "geolocation" });
         if (result.state === "granted" || result.state === "prompt") {
-            const position = await getCurrentPositionAsync();
+            const position = await getCurrentPosition();
             userLocation.latitude = position.coords.latitude;
             userLocation.longitude = position.coords.longitude;
         } else if (result.state === "denied") {
