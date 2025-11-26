@@ -1,10 +1,9 @@
 import { getRandomJoke } from "./scripts/api-manager/joke-services";
-import { getLocationPermission } from "./scripts/api-manager/weather-services";
+import { getCurrentWeather, getLocationPermission } from "./scripts/api-manager/weather-services";
 import { jokeReport, scoreJoke } from "./scripts/jokes/score";
 import { disableScoreButtons, enableScoreButtons, showJoke } from "./scripts/jokes/ui";
 import { showMap } from "./scripts/map/ui";
 import { showWeather } from "./scripts/weather/ui";
-// getCurrentWeather
 
 let currentJoke: { joke: string; type: string } | undefined;
 
@@ -48,11 +47,10 @@ scoreCtn.addEventListener("click", (e: MouseEvent | TouchEvent) => {
 async function loadUserLocationInfo() {
     await getLocationPermission();
     showMap();
-    //const weatherData: { temperature: number; icon: string } | undefined = await getCurrentWeather();
-    //if (weatherData) {
-    //    showWeather(weatherData.temperature, weatherData.icon);
-    //}
-    showWeather(8, "10n")
+    const weatherData: { temperature: number; icon: string } | undefined = await getCurrentWeather();
+    if (weatherData) {
+        showWeather(weatherData.temperature, weatherData.icon);
+    }
 }
 
 loadUserLocationInfo();
