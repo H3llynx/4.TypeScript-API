@@ -13,7 +13,7 @@ This project is intended as a practice exercise for working with TypeScript and 
 ```bash
 git clone https://github.com/H3llynx/4.TypeScript-API.git
 cd 4.TypeScript-API
-git checkout develop
+git checkout visual-refactor
 npm install
 npm run dev
 ```
