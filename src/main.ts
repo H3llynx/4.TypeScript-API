@@ -3,9 +3,10 @@ import { getCurrentWeather, getLocationPermission } from "./scripts/api-manager/
 import { jokeReport, scoreJoke } from "./scripts/jokes/score";
 import { disableScoreButtons, enableScoreButtons, showJoke } from "./scripts/jokes/ui";
 import { showMap } from "./scripts/map/ui";
-import { showWeather } from "./scripts/weather/ui";
+import type { Joke, Weather } from "./scripts/types/types";
+import { showWeather, showWeatherUnavailable } from "./scripts/weather/ui";
 
-let currentJoke: { joke: string; type: string } | undefined;
+let currentJoke: Joke | undefined;
 
 function setScoreButtons() {
     const scoreBtn = document.querySelectorAll(".score-button");
@@ -22,12 +23,16 @@ function setScoreButtons() {
     });
 }
 async function loadJoke() {
-    const joke = await getRandomJoke();
-    if (joke) {
-        showJoke(joke);
-        currentJoke = joke;
-        enableScoreButtons();
-        setScoreButtons();
+    try {
+        const joke = await getRandomJoke();
+        if (joke) {
+            showJoke(joke);
+            currentJoke = joke;
+            enableScoreButtons();
+            setScoreButtons();
+        }
+    } catch {
+        alert("Joke unavailable")
     }
 };
 
@@ -47,9 +52,11 @@ scoreCtn.addEventListener("click", (e: MouseEvent | TouchEvent) => {
 async function loadUserLocationInfo() {
     await getLocationPermission();
     showMap();
-    const weatherData: { temperature: number; icon: string } | undefined = await getCurrentWeather();
-    if (weatherData) {
-        showWeather(weatherData.temperature, weatherData.icon);
+    try {
+        const weatherData: Weather = await getCurrentWeather();
+        if (weatherData) showWeather(weatherData);
+    } catch {
+        showWeatherUnavailable();
     }
 }
 

@@ -67,6 +67,7 @@ main {
   background: var(--bg-header);
   padding: 5% 2%;
   gap: 2rem;
+  position: relative;
 }
 
 header {
@@ -82,31 +83,51 @@ header {
   margin: auto;
   border-radius: 0.6rem;
   border: 1px solid var(--pink-lighter);
+  height: 90px;
 }
 
 #temperature-widget {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background: rgba(217, 244, 255, 0.6);
+  background: rgba(255, 183, 221, 0.6);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   background-size: cover;
   color: var(--dark);
-  padding: 1rem 0.4rem;
+  padding: 0 0.4rem;
   box-shadow: var(--shadow);
   font-weight: 600;
+  position: relative;
 
-  img {
+  img:not(.star) {
     aspect-ratio: 4/4;
     border-radius: 50%;
     max-width: 25%;
+  }
+
+  .star {
+    height: 100%;
+    max-width: unset;
+    filter: drop-shadow(2px 2px 10px var(--dark));
+  }
+
+  p {
+    padding: 1rem 0.5rem;
+  }
+
+  .no-location-p {
+    font-size: 0.8rem;
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
   }
 }
 
 #map {
   height: 200px;
   margin: auto auto 0 auto;
+  background: url("../assets/images/map-bg.png");
+  background-size: cover;
 }
 
 section {
