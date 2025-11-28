@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Knewave&display=swap');
 
 :root {
-  --bg-header: linear-gradient(90deg, transparent, rgba(4, 5, 4, 0.8));
   --bg-rgba: rgba(217, 217, 217, 0.5);
   --bg-rgba-dark: rgba(36, 36, 36, 0.6);
   --dark: #191919;
@@ -11,7 +10,6 @@
   --pink-gradient: linear-gradient(90deg, rgb(255, 13, 90), rgb(255, 127, 168)), rgb(255, 13, 82);
   --shadow: 2px 2px 16px rgb(54, 54, 54);
 }
-
 
 * {
   box-sizing: border-box;
@@ -75,7 +73,7 @@ main {
     "jokes map"
     "music map"
     "music weather";
-  background: var(--bg-header);
+  background: linear-gradient(90deg, transparent, rgba(4, 5, 4, 0.8));
   padding: 5% 2%;
   gap: 2rem;
   position: relative;
@@ -257,11 +255,18 @@ button {
       "header"
       "jokes"
       "weather"
-      "map";
-    background: unset;
+      "map"
+      "music";
+    background: linear-gradient(0deg, transparent, rgba(4, 5, 4, 0.8));
   }
 
   section {
     margin: auto;
+  }
+
+  .audio {
+    padding: 0.4rem 1rem;
+    background: var(--bg-rgba-dark);
+    border: 1px solid var(--pink);
   }
 }
