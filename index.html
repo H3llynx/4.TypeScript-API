@@ -15,6 +15,7 @@
   <main>
     <header style="grid-area: header">
       <h1>Joke App</h1>
+      <h3>Your daily dose of procrastination</h3>
     </header>
     <section id="joke-container" style="grid-area: jokes">
       <div class="score-container" role="group" aria-label="Score this joke">
@@ -26,6 +27,16 @@
             d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z" />
         </svg>
         Next joke</button>
+    </section>
+    <section class="audio" style="grid-area: music">
+      <h2>How about some feel-good reggae?</h2>
+      <div class="flex-container">
+        <img alt="Peter Tosh disc image" src="/src/assets/images/peter-tosh.png">
+        <audio aria-label="Peter Tosh - Reggaemylitis music" controls src="/src/assets/audio/reggaemylitis.mp3"
+          type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
     </section>
     <div id="map" class="widget" style="grid-area: map"></div>
     <div id="temperature-widget" class="widget" style="grid-area: weather">
