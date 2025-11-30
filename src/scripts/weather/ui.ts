@@ -1,3 +1,4 @@
+import StarImg from "../../assets/images/star.png";
 import type { Weather } from "../types/types";
 const widget = document.getElementById("temperature-widget") as HTMLDivElement
 
@@ -17,7 +18,7 @@ export function showWeather(data: Weather) {
 
 export function showWeatherUnavailable() {
     widget.innerHTML = `
-    <img src="/src/assets/images/star.png" class="star">
+    <img src=${StarImg} class="star">
     <p class="no-location-p">Enable location in your browser settings to see the current weather information.</p>
     `;
 }
