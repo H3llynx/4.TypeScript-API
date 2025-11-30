@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sofa Jokes</title>
+  <link rel="icon" href="/4.TypeScript-API/assets/favicon-EPOGvK9N.ico">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <script type="module" crossorigin src="/4.TypeScript-API/assets/index-BIHdRRcR.js"></script>
+  <link rel="stylesheet" crossorigin href="/4.TypeScript-API/assets/index-BoBaZPFg.css">
+</head>
+
+<body>
+  <main>
+    <header style="grid-area: header">
+      <h1>Joke App</h1>
+      <h3>Your daily dose of procrastination</h3>
+    </header>
+    <section id="joke-container" style="grid-area: jokes">
+      <div class="score-container" role="group" aria-label="Score this joke">
+      </div>
+      <p id="joke-text"></p>
+      <button id="joke-button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="currentColor">
+          <path
+            d="M383-480 200-664l56-56 240 240-240 240-56-56 183-184Zm264 0L464-664l56-56 240 240-240 240-56-56 183-184Z" />
+        </svg>
+        Next joke</button>
+    </section>
+    <section class="audio" style="grid-area: music">
+      <h2>How about some feel-good reggae?</h2>
+      <div class="flex-container">
+        <img alt="Peter Tosh disc image" src="/4.TypeScript-API/assets/peter-tosh-C0dlyNHU.png">
+        <audio aria-label="Peter Tosh - Reggaemylitis music" controls src="/4.TypeScript-API/assets/reggaemylitis-D6iKmRN4.mp3"
+          type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </div>
+    </section>
+    <div id="map" class="widget" style="grid-area: map"></div>
+    <div id="temperature-widget" class="widget" style="grid-area: weather">
+    </div>
+  </main>
+</body>
+
+</html>
