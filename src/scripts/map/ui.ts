@@ -1,4 +1,5 @@
 import * as L from "leaflet";
+import Marker from "../../assets/images/marker.png";
 import { userLocation } from "../api-manager/weather-services";
 
 export async function showMap() {
@@ -10,7 +11,7 @@ export async function showMap() {
             attribution: "Tiles © Esri"
         }).addTo(map);
         var customMarker = L.icon({
-            iconUrl: "src/assets/images/marker.png",
+            iconUrl: Marker,
             iconSize: [38, 38],
             popupAnchor: [-3, -76]
         });
