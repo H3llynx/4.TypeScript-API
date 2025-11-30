@@ -13,4 +13,5 @@ export interface ScoredJoke {
 export interface Weather {
     temperature: number,
     icon: string
+    description: string
 }

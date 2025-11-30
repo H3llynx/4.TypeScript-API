@@ -8,7 +8,8 @@ export const WeatherSchema = z.object({
     }),
     weather: z.array(
         z.object({
-            icon: z.string()
+            icon: z.string(),
+            description: z.string()
         })
     )
 });

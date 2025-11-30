@@ -37,7 +37,8 @@ export async function getCurrentWeather(): Promise<Weather> {
         if (!data) throw new Error("Weather information unavailable");
         return {
             temperature: validated.main.temp,
-            icon: validated.weather[0].icon
+            icon: validated.weather[0].icon,
+            description: validated.weather[0].description
         };
     } catch (error) {
         console.error(error);

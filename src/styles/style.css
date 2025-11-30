@@ -109,6 +109,19 @@ header {
   font-weight: 600;
   position: relative;
 
+  p {
+    margin: 0.5rem 0;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+  }
+
+  .weather-description {
+    font-size: 0.8rem;
+    font-weight: 300;
+    text-indent: 8px;
+  }
+
   img:not(.star) {
     aspect-ratio: 4/4;
     border-radius: 50%;
@@ -140,6 +153,7 @@ section {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  border-radius: 0.6rem;
 
   button:not(.score-container button) {
     color: var(--dark);
@@ -163,7 +177,6 @@ section {
 
 #joke-container {
   padding: 1.5rem 2rem;
-  border-radius: 0.6rem;
   background: var(--bg-rgba);
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
