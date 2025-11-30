@@ -14,15 +14,20 @@ const starSvg = `<svg aria-hidden="true"
     c0.2,0.1,0.4,0.2,0.6,0.2c0.2,0,0.4-0.1,0.6-0.2c0.3-0.2,0.5-0.7,0.4-1.1L23,19.5l7.6-5.7C30.9,13.5,31.1,13.1,30.9,12.7z M15,18
     c0,0.6-0.4,1-1,1s-1-0.4-1-1v-2c0-0.6,0.4-1,1-1s1,0.4,1,1V18z M19,18c0,0.6-0.4,1-1,1s-1-0.4-1-1v-2c0-0.6,0.4-1,1-1s1,0.4,1,1V18z"/>
 </svg>`
+const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
+const jokeCtn = document.getElementById("joke-container") as HTMLElement;
 
 export function showJoke(data: Joke) {
-  const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
-  const jokeCtn = document.getElementById("joke-container") as HTMLElement;
   jokeP.textContent = data.joke;
   if (data.type === "chuck") {
     jokeCtn.classList.add("chuck");
   } else jokeCtn.classList.remove("chuck");
 }
+
+export function showJokeUnavailable() {
+  jokeP.textContent = "It looks like this joke is no longer available. Click on the next button to load a new one!"
+}
+
 
 export function disableScoreButtons(score: number) {
   const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;

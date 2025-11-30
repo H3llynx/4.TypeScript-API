@@ -1,7 +1,7 @@
 import { getRandomJoke } from "./scripts/api-manager/joke-services";
 import { getCurrentWeather, getLocationPermission } from "./scripts/api-manager/weather-services";
 import { jokeReport, scoreJoke } from "./scripts/jokes/score";
-import { disableScoreButtons, enableScoreButtons, showJoke } from "./scripts/jokes/ui";
+import { disableScoreButtons, enableScoreButtons, showJoke, showJokeUnavailable } from "./scripts/jokes/ui";
 import { showMap } from "./scripts/map/ui";
 import type { Joke, Weather } from "./scripts/types/types";
 import { showWeather, showWeatherUnavailable } from "./scripts/weather/ui";
@@ -22,6 +22,7 @@ function setScoreButtons() {
         });
     });
 }
+
 async function loadJoke() {
     try {
         const joke = await getRandomJoke();
@@ -32,7 +33,7 @@ async function loadJoke() {
             setScoreButtons();
         }
     } catch {
-        alert("Joke unavailable")
+        showJokeUnavailable();
     }
 };
 
@@ -61,7 +62,6 @@ async function loadUserLocationInfo() {
 }
 
 loadUserLocationInfo();
-
 
 const jokeBtn = document.getElementById("joke-button") as HTMLButtonElement;
 jokeBtn.addEventListener("click", loadJoke);
