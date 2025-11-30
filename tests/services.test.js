@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { getRandomJoke } from "../src/scripts/api-manager/joke-services";
 import { getCurrentWeather } from "../src/scripts/api-manager/weather-services";
-import { ChuckSchema, DadSchema, WeatherSchema } from "../src/scripts/types/types";
+import { ChuckSchema, DadSchema, WeatherSchema } from "../src/scripts/types/zod-validation";
 
 describe('API Schemas', () => {
     it("Validates correct Chuck Norris joke type", () => {
@@ -22,7 +22,7 @@ describe('API Schemas', () => {
     it("Validates correct Weather data types", () => {
         const result = WeatherSchema.safeParse({
             main: { temp: 0 },
-            weather: [{ icon: "0dh" }]
+            weather: [{ icon: "0dh", description: "cloudy" }]
         });
         expect(result.success).toBe(true);
     });

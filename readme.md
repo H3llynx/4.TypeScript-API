@@ -8,21 +8,26 @@ This project is intended as a practice exercise for working with TypeScript and 
 
 ## Getting Started
 
-1. **Clone the repo and switch to this branch:**
+1. **Clone the repository:**
 
 ```bash
 git clone https://github.com/H3llynx/4.TypeScript-API.git
+```
+
+2. **Install dependencies:**
+
+```bash
 cd 4.TypeScript-API
-<<<<<<< HEAD
-git checkout visual-refactor
-=======
-git checkout develop
->>>>>>> 95c49f1 (feature / random joke function to show random joke on page loading, and button to get another joke)
 npm install
 npm run dev
 ```
 
-2. **Preview in browser:**
+3. **Run tests:**
+```bash
+npx vitest
+```
+
+## Preview in browser:
 
 ![Screenshot](src/assets/images/preview.png)
 
@@ -52,6 +57,7 @@ npm run dev
 - TypeScript
 - HTML
 - CSS
+- Vitest
 
 ---
 
@@ -64,3 +70,10 @@ Contributions are welcome! Please follow these steps to contribute:
 3. Make your changes and commit them: git commit -m 'Add New Feature'
 4. Push the changes to your branch: git push origin feature/NewFeature
 5. Open a pull request
+
+---
+
+##  Learnings and challenges
+
+This was my first project using TypeScript, and it pushed me to learn its core concepts while improving how I structure and reason about my code. I also deepened my understanding of working with external APIs—handling requests and responses.
+One of the key new tools I adopted was Zod, which helped me validate and enforce data shapes safely throughout the project. Overall, the experience strengthened both my TypeScript fundamentals and my approach to building more robust applications.
