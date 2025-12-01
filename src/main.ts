@@ -8,7 +8,7 @@ import { showWeather, showWeatherUnavailable } from "./scripts/weather/ui";
 
 let currentJoke: Joke | undefined;
 
-function setScoreButtons() {
+function setScoreButtons(): void {
     const scoreBtn = document.querySelectorAll(".score-button");
     scoreBtn.forEach(button => {
         const btn = button as HTMLButtonElement;
