@@ -17,7 +17,7 @@ const starSvg = `<svg aria-hidden="true"
 const jokeP = document.getElementById("joke-text") as HTMLParagraphElement;
 const jokeCtn = document.getElementById("joke-container") as HTMLElement;
 
-export function showJoke(data: Joke) {
+export function showJoke(data: Joke): void {
   jokeP.textContent = data.joke;
   if (data.type === "chuck") {
     jokeCtn.classList.add("chuck");
@@ -29,7 +29,7 @@ export function showJokeUnavailable() {
 }
 
 
-export function disableScoreButtons(score: number) {
+export function disableScoreButtons(score: number): void {
   const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;
   scoreCtn.classList.add("scored");
   scoreCtn.innerHTML = "<span>You scored this joke: </span>";
@@ -50,7 +50,7 @@ export function disableScoreButtons(score: number) {
   </button>`;
 };
 
-export function enableScoreButtons() {
+export function enableScoreButtons(): void {
   const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;
   scoreCtn.classList.remove("scored");
   scoreCtn.innerHTML = `
