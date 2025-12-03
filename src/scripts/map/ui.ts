@@ -1,6 +1,6 @@
 import * as L from "leaflet";
 import Marker from "../../assets/images/marker.png";
-import { userLocation } from "../api-manager/weather-services";
+import { userLocation } from "../weather/weather-services";
 
 export async function showMap() {
     if (userLocation.latitude && userLocation.longitude) {

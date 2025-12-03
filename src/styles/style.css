@@ -253,9 +253,7 @@ button {
   }
 }
 
-.score-container.scored {
-  flex-direction: row;
-  justify-content: flex-end;
+.scored {
   color: var(--pink);
   opacity: 0.8;
 }

@@ -28,30 +28,8 @@ export function showJokeUnavailable() {
   jokeP.textContent = "It looks like this joke is no longer available. Click on the next button to load a new one!"
 }
 
-
-export function disableScoreButtons(score: number): void {
-  const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;
-  scoreCtn.classList.add("scored");
-  scoreCtn.innerHTML = "<span>You scored this joke: </span>";
-  if (score === 1) {
-    scoreCtn.innerHTML += `<span aria-label="1 star">${starSvg}</span>`;
-  }
-  else if (score === 2) {
-    scoreCtn.innerHTML += `
-    <span aria-label="2 stars">${starSvg} ${starSvg}</span>
-    `;
-  } else {
-    scoreCtn.innerHTML += `
-    <span aria-label="3 stars">${starSvg} ${starSvg} ${starSvg}</span>
-            `;
-  };
-  scoreCtn.innerHTML += `<button id="update-score-button" tabindex="0" class="edit-btn" aria-label="Change score">
-  <svg class="edit" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
-  </button>`;
-};
-
+const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;
 export function enableScoreButtons(): void {
-  const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;
   scoreCtn.classList.remove("scored");
   scoreCtn.innerHTML = `
         <button tabindex="0" aria-label="score 3 stars" class="score-button" data-score="3">
@@ -65,4 +43,13 @@ export function enableScoreButtons(): void {
         </button>
         <span aria-hidden="true">Score this joke: </span>
     `;
+}
+
+export function showGivenScore(score: number) {
+  const scoreBtns = scoreCtn.querySelectorAll("button");
+  scoreBtns.forEach(button => {
+    const btn = button as HTMLButtonElement
+    if (Number(btn.dataset.score) <= score) btn.classList.add("scored")
+    else btn.classList.remove("scored")
+  })
 }
