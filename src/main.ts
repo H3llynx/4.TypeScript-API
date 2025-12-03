@@ -1,10 +1,10 @@
-import { getRandomJoke } from "./scripts/api-manager/joke-services";
-import { getCurrentWeather, getLocationPermission } from "./scripts/api-manager/weather-services";
+import { getChuckJoke, getDadJoke } from "./scripts/jokes/joke-services";
 import { jokeReport, scoreJoke } from "./scripts/jokes/score";
-import { disableScoreButtons, enableScoreButtons, showJoke, showJokeUnavailable } from "./scripts/jokes/ui";
+import { enableScoreButtons, showGivenScore, showJoke, showJokeUnavailable } from "./scripts/jokes/ui";
 import { showMap } from "./scripts/map/ui";
 import type { Joke, Weather } from "./scripts/types/types";
 import { showWeather, showWeatherUnavailable } from "./scripts/weather/ui";
+import { getCurrentWeather, getLocationPermission } from "./scripts/weather/weather-services";
 
 let currentJoke: Joke | undefined;
 
@@ -17,15 +17,16 @@ function setScoreButtons(): void {
             if (currentJoke) {
                 scoreJoke(score, currentJoke);
                 console.log(jokeReport);
-                disableScoreButtons(score);
+                showGivenScore(score);
             }
         });
     });
 }
 
 async function loadJoke() {
+    const random = Math.floor(Math.random() * 2);
     try {
-        const joke = await getRandomJoke();
+        const joke = random === 0 ? await getDadJoke() : await getChuckJoke();
         if (joke) {
             showJoke(joke);
             currentJoke = joke;
@@ -39,16 +40,6 @@ async function loadJoke() {
 
 loadJoke();
 
-const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;
-scoreCtn.addEventListener("click", (e: MouseEvent | TouchEvent) => {
-    const target = e.target as HTMLButtonElement;
-    if (!target || target.type !== "submit") return;
-    else {
-        jokeReport.pop();
-        enableScoreButtons();
-        setScoreButtons();
-    }
-})
 
 async function loadUserLocationInfo() {
     await getLocationPermission();
