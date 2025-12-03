@@ -18,6 +18,7 @@ export async function getDadJoke(): Promise<Joke> {
 export async function getChuckJoke(): Promise<Joke> {
     const data = await getData("https://api.chucknorris.io/jokes/random", headers);
     const validated = ChuckSchema.parse(data);
+    if (!data) throw new Error("Joke unavailable");
     return {
         joke: validated.value,
         type: "chuck",

@@ -5,6 +5,7 @@ export function scoreJoke(value: number, joke: Joke): void {
     const alreadyScored = jokeReport.find(scored => scored.id === joke.id);
     if (alreadyScored) {
         alreadyScored.score = value;
+        alreadyScored.date = new Date().toISOString();
     } else {
         jokeReport.push({
             id: joke.id,
