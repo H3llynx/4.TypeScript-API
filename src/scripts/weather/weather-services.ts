@@ -1,4 +1,4 @@
-import { weatherConfig } from "../api-manager/api-config";
+import { headers, weatherKey } from "../api-manager/api-config";
 import { getData } from "../api-manager/api-service";
 import type { Weather } from "../types/types";
 import { WeatherSchema } from "../types/zod-validation";
@@ -27,11 +27,9 @@ export async function getLocationPermission() {
     }
 }
 
-const key = weatherConfig.key;
-const headers = weatherConfig.headers;
 
 export async function getCurrentWeather(): Promise<Weather> {
-    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${key}&units=metric`;
+    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${weatherKey}&units=metric`;
     try {
         const data = await getData(weatherURL, headers);
         const validated = WeatherSchema.parse(data);

@@ -1,9 +1,7 @@
-import { JokeConfig } from "../api-manager/api-config";
+import { headers } from "../api-manager/api-config";
 import { getData } from "../api-manager/api-service";
 import type { Joke } from "../types/types";
 import { ChuckSchema, DadSchema } from "../types/zod-validation";
-
-const headers = JokeConfig.headers
 
 export async function getDadJoke(): Promise<Joke> {
     const data = await getData("https://icanhazdadjoke.com/", headers);

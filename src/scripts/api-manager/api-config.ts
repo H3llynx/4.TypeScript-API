@@ -1,13 +1,5 @@
-export const JokeConfig = {
-    headers: {
-        "Accept": "application/json",
-        "User-Agent": "Sofa division"
-    }
-}
+export const headers = {
+    "Accept": "application/json",
+};
 
-export const weatherConfig = {
-    headers: {
-        "Accept": "application/json",
-    },
-    key: "8262f0260647636979f12177667c2539"
-}
+export const weatherKey = "8262f0260647636979f12177667c2539"
