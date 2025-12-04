@@ -1,4 +1,5 @@
 import type { Joke } from "../types/types";
+import { jokeReport } from "./score";
 
 const starSvg = `<svg aria-hidden="true"
      xmlns="http://www.w3.org/2000/svg"
@@ -30,7 +31,6 @@ export function showJokeUnavailable() {
 
 const scoreCtn = document.querySelector(".score-container") as HTMLDivElement;
 export function enableScoreButtons(): void {
-  scoreCtn.classList.remove("scored");
   scoreCtn.innerHTML = `
         <button tabindex="0" aria-label="score 3 stars" class="score-button" data-score="3">
         ${starSvg}
@@ -45,11 +45,15 @@ export function enableScoreButtons(): void {
     `;
 }
 
-export function showGivenScore(score: number) {
+export function showGivenScore(joke: Joke) {
+  const scoredJoke = jokeReport.find(scored => scored.id === joke.id);
   const scoreBtns = scoreCtn.querySelectorAll("button");
   scoreBtns.forEach(button => {
     const btn = button as HTMLButtonElement
-    if (Number(btn.dataset.score) <= score) btn.classList.add("scored")
-    else btn.classList.remove("scored")
+    if (scoredJoke) {
+      if (Number(btn.dataset.score) <= scoredJoke.score) btn.classList.add("scored")
+      else btn.classList.remove("scored")
+    }
+    else btn.classList.remove("scored");
   })
-}
+};

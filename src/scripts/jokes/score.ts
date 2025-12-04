@@ -4,8 +4,13 @@ export const jokeReport: ScoredJoke[] = []
 export function scoreJoke(value: number, joke: Joke): void {
     const alreadyScored = jokeReport.find(scored => scored.id === joke.id);
     if (alreadyScored) {
-        alreadyScored.score = value;
-        alreadyScored.date = new Date().toISOString();
+        if (alreadyScored.score === value) {
+            const index = jokeReport.indexOf(alreadyScored)
+            jokeReport.splice(index, 1);
+        } else {
+            alreadyScored.score = value;
+            alreadyScored.date = new Date().toISOString();
+        }
     } else {
         jokeReport.push({
             id: joke.id,
@@ -14,4 +19,5 @@ export function scoreJoke(value: number, joke: Joke): void {
             date: new Date().toISOString()
         })
     }
+    console.log(jokeReport);
 };

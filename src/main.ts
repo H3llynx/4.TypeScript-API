@@ -1,12 +1,12 @@
 import { getChuckJoke, getDadJoke } from "./scripts/jokes/joke-services";
-import { jokeReport, scoreJoke } from "./scripts/jokes/score";
+import { scoreJoke } from "./scripts/jokes/score";
 import { enableScoreButtons, showGivenScore, showJoke, showJokeUnavailable } from "./scripts/jokes/ui";
 import { showMap } from "./scripts/map/ui";
 import type { Joke, Weather } from "./scripts/types/types";
 import { showWeather, showWeatherUnavailable } from "./scripts/weather/ui";
 import { getCurrentWeather, getLocationPermission, userLocation } from "./scripts/weather/weather-services";
 
-let currentJoke: Joke | undefined;
+let currentJoke: Joke;
 
 function setScoreButtons(): void {
     const scoreBtn = document.querySelectorAll(".score-button");
@@ -16,8 +16,7 @@ function setScoreButtons(): void {
         btn.addEventListener("click", () => {
             if (currentJoke) {
                 scoreJoke(score, currentJoke);
-                console.log(jokeReport);
-                showGivenScore(score);
+                showGivenScore(currentJoke);
             }
         });
     });
