@@ -4,7 +4,7 @@ import { enableScoreButtons, showGivenScore, showJoke, showJokeUnavailable } fro
 import { showMap } from "./scripts/map/ui";
 import type { Joke, Weather } from "./scripts/types/types";
 import { showWeather, showWeatherUnavailable } from "./scripts/weather/ui";
-import { getCurrentWeather, getLocationPermission } from "./scripts/weather/weather-services";
+import { getCurrentWeather, getLocationPermission, userLocation } from "./scripts/weather/weather-services";
 
 let currentJoke: Joke | undefined;
 
@@ -45,8 +45,10 @@ async function loadUserLocationInfo() {
     await getLocationPermission();
     showMap();
     try {
-        const weatherData: Weather = await getCurrentWeather();
-        if (weatherData) showWeather(weatherData);
+        if (userLocation.latitude !== undefined && userLocation.longitude !== undefined) {
+            const weatherData: Weather = await getCurrentWeather(userLocation.latitude, userLocation.longitude);
+            if (weatherData) showWeather(weatherData);
+        }
     } catch {
         showWeatherUnavailable();
     }

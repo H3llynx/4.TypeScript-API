@@ -28,8 +28,8 @@ export async function getLocationPermission() {
 }
 
 
-export async function getCurrentWeather(): Promise<Weather> {
-    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${userLocation.latitude}&lon=${userLocation.longitude}&appid=${weatherKey}&units=metric`;
+export async function getCurrentWeather(lat: number, lon: number): Promise<Weather> {
+    const weatherURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${weatherKey}&units=metric`;
     try {
         const data = await getData(weatherURL, headers);
         const validated = WeatherSchema.parse(data);

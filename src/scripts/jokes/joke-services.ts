@@ -6,6 +6,7 @@ import { ChuckSchema, DadSchema } from "../types/zod-validation";
 export async function getDadJoke(): Promise<Joke> {
     const data = await getData("https://icanhazdadjoke.com/", headers);
     const validated = DadSchema.parse(data);
+    if (!data) throw new Error("Joke unavailable");
     return {
         joke: validated.joke,
         type: "dad",
