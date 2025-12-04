@@ -18,6 +18,7 @@ git clone https://github.com/H3llynx/4.TypeScript-API.git
 
 ```bash
 cd 4.TypeScript-API
+git checkout refactor
 npm install
 npm run dev
 ```
@@ -39,6 +40,21 @@ npx vitest
 📦 src
  ┣ 📂 assets
  ┣ 📂 scripts
+ │  ┣ 📂 api-manager
+ │  │   ┣ 📄 api-config.ts
+ │  │   ┗ 📄 api-services.ts
+ │  ┣ 📂 jokes             
+ │  │    ┣ 📄 joke-services.ts
+ │  │    ┣ 📄 score.ts
+ │  │    ┗ 📄 ui.ts
+ │  ┣ 📂 map            
+ │  │    ┗ 📄 ui.ts
+ │  ┣ 📂 types
+ │  │    ┣ 📄 types.ts
+ │  │    ┗ 📄 zod-validation.ts
+ │  ┗ 📂 weather
+ │       ┣ 📄 ui.ts
+ │       ┗ 📄 weather-services.ts
  ┣ 📂 styles
  ┣ 📄 main.ts
  ┣ 📄 vite.env.d.ts
@@ -47,7 +63,8 @@ npx vitest
  ┣ 📄 package-lock.json
  ┣ 📄 package.json
  ┣ 📄 README.md
- ┗ 📄 tsconfig.json
+ ┣ 📄 tsconfig.json
+ ┗ 📄 vite.config.ts
 ```
 
 ---
