@@ -1,9 +1,11 @@
+//@vitest-environment node
+
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { getChuckJoke, getDadJoke } from "../src/scripts/jokes/joke-services";
 import { ChuckSchema, DadSchema, WeatherSchema } from "../src/scripts/types/zod-validation";
 import { getCurrentWeather, getLocationPermission, userLocation } from "../src/scripts/weather/weather-services";
 
-describe('API Schemas validation', () => {
+describe("API Schemas validation", () => {
     it("Validates correct Chuck Norris joke type", () => {
         const result = ChuckSchema.safeParse({ value: "Chuck test" });
         expect(result.success).toBe(true);
@@ -25,11 +27,6 @@ describe('API Schemas validation', () => {
             weather: [{ icon: "0dh", description: "cloudy" }]
         });
         expect(correctResult.success).toBe(true);
-        // const wrongResult = WeatherSchema.safeParse({
-        //     main: { temp: "8" },
-        //     weather: [{ icon: 123, description: "cloudy" }]
-        // });
-        // expect(wrongResult.success).toBe(false);
     });
 });
 
