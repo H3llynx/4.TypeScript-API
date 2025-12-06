@@ -1,10 +1,10 @@
-import { headers } from "../api-manager/api-config";
+import { headers, jokesAPI } from "../api-manager/api-config";
 import { getData } from "../api-manager/api-service";
 import type { Joke } from "../types/types";
 import { ChuckSchema, DadSchema } from "../types/zod-validation";
 
 export async function getDadJoke(): Promise<Joke> {
-    const data = await getData("https://icanhazdadjoke.com/", headers);
+    const data = await getData(jokesAPI.dadURL, headers);
     const validated = DadSchema.parse(data);
     if (!data) throw new Error("Joke unavailable");
     return {
@@ -15,7 +15,7 @@ export async function getDadJoke(): Promise<Joke> {
 }
 
 export async function getChuckJoke(): Promise<Joke> {
-    const data = await getData("https://api.chucknorris.io/jokes/random", headers);
+    const data = await getData(jokesAPI.chuckURL, headers);
     const validated = ChuckSchema.parse(data);
     if (!data) throw new Error("Joke unavailable");
     return {
